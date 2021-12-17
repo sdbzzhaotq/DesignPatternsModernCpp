@@ -5,6 +5,7 @@
 #include "Observer.h"
 #include "Observable.h"
 
+//Person是继承Observable的
 struct Person : Observable <Person> {
     Person(int value) { age = value; }
     int get_age() const { return age; }
@@ -17,6 +18,7 @@ private:
     int age;
 };
 
+//ConsolePersonObserver 是用来观察Person(Observable)的
 struct ConsolePersonObserver : Observer<Person> {
     void field_change(Person& source, const std::string& field_name) override {
         std::cout << "Person's " << field_name << " has changed to "
